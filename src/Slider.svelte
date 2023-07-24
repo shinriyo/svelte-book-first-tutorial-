@@ -1,21 +1,15 @@
 <script>
 export let images;
 let centerIndex = 0;
-let leftIndex = images.length - 1;
-let rightIndex = 1;
+$: leftIndex = (centerIndex - 1 + images.length) % images.length;
+$: rightIndex = (centerIndex + 1) % images.length;
 
 function moveLeft() {
-  const length = images.length;
-  centerIndex = (centerIndex - 1 + length) % length;
-  leftIndex = (centerIndex - 1 + length) % length;
-  rightIndex = (centerIndex + 1) % length;
+  centerIndex = (centerIndex - 1 + images.length) % images.length;
 }
 
 function moveRight() {
-  const length = images.length;
-  centerIndex = (centerIndex + 1) % length;
-  leftIndex = (centerIndex - 1 + length) % length;
-  rightIndex = (centerIndex + 1) % length;
+  centerIndex = (centerIndex + 1) % images.length;
 }
 </script>
 
